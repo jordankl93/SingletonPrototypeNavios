@@ -9,11 +9,10 @@ package br.ifes.edu.poo2.cdp;
  *
  * @author Jordan-Not
  */
-public interface Navio {    
+public interface Navio extends Cloneable{    
     
     public int getCarga();
     public int getPassageiro();
     
-    
-    
+    public Object clone();    
 }

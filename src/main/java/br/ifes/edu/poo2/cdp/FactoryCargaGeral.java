@@ -9,11 +9,17 @@ package br.ifes.edu.poo2.cdp;
  *
  * @author Jordan-Not
  */
-public class FactoryCargaGeral implements FactoryNavio{
-
-    @Override
-    public Navio criarNavio() {
-        return new NavioCargaGeral();
-    }
+public enum FactoryCargaGeral implements FactoryNavio{
+    FACTORY_CARGA_GERAL;
     
+    private Navio cargaGeral;
+    
+    @Override
+    public synchronized Navio criarNavio() {
+        if(cargaGeral == null){
+            cargaGeral = new NavioCargaGeral();
+            return cargaGeral;
+        }
+        return (Navio) cargaGeral.clone();
+    }    
 }

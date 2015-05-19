@@ -9,11 +9,17 @@ package br.ifes.edu.poo2.cdp;
  *
  * @author Jordan-Not
  */
-public class FactoryCruzeiro implements FactoryNavio{
+public enum FactoryCruzeiro implements FactoryNavio{
+    FACTORY_CRUZEIRO;
+    
+    private Navio cruzeiro;   
 
     @Override
-    public Navio criarNavio() {
-        return new NavioCruzeiro();
+    public synchronized Navio criarNavio() {
+        if(cruzeiro == null){
+            cruzeiro = new NavioCruzeiro();
+            return cruzeiro;
+        }
+        return (Navio) cruzeiro.clone();
     }
-    
 }

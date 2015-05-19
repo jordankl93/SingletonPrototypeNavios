@@ -9,11 +9,17 @@ package br.ifes.edu.poo2.cdp;
  *
  * @author Jordan-Not
  */
-public class FactoryEscuna implements FactoryNavio{
-
-    @Override
-    public Navio criarNavio() {
-        return new NavioEscuna();
-    }
+public enum FactoryEscuna implements FactoryNavio{
+    FACTORY_ESCUNA;
     
+    private Navio escuna;
+    
+    @Override
+    public synchronized Navio criarNavio() {
+        if(escuna == null){
+            escuna = new NavioEscuna();
+            return escuna;
+        }
+        return (Navio) escuna.clone();
+    }
 }

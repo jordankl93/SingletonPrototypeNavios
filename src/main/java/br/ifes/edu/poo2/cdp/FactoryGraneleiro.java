@@ -9,11 +9,17 @@ package br.ifes.edu.poo2.cdp;
  *
  * @author Jordan-Not
  */
-public class FactoryGraneleiro implements FactoryNavio{
+public enum FactoryGraneleiro implements FactoryNavio{
+    FACTORY_GRANELEIRO;
+    
+    private Navio graneleiro;
 
     @Override
-    public Navio criarNavio() {
-        return new NavioGraneleiro();
+    public synchronized Navio criarNavio() {
+        if(graneleiro == null){
+            graneleiro = new NavioGraneleiro();
+            return graneleiro;
+        }
+        return (Navio) graneleiro.clone();
     }
-    
 }

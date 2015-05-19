@@ -27,6 +27,20 @@ public abstract class AbstractNavio implements Navio{
     public abstract int getPassageiro();
     
     @Override
+    public Object clone(){
+        Object obj = null;
+        
+        try{
+            obj = super.clone();
+        }
+        catch(CloneNotSupportedException x){
+            System.out.println(x.getMessage());
+        }
+        
+        return obj;
+    }
+    
+    @Override
     public String toString(){
         return "Quantidade de passageiros: " + getPassageiro() + " | Quantidade Carga: " + getCarga() + " Toneladas";
     }

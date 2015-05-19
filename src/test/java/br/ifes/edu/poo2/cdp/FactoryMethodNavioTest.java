@@ -53,7 +53,7 @@ public class FactoryMethodNavioTest {
     public void testCriarNavioCruzeiro() {
         System.out.println("criarNavioCruzeiro");
         TipoNavio tipoNavio = TipoNavio.CRUZEIRO;
-        Navio expResult = new NavioCruzeiro();
+        Navio expResult = FactoryCruzeiro.FACTORY_CRUZEIRO.criarNavio();
         Navio result = FactoryMethodNavio.criarNavio(tipoNavio);
         assertEquals(expResult.getClass(), result.getClass());
     }

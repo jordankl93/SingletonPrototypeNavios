@@ -15,15 +15,15 @@ public class FactoryMethodNavio {
         FactoryNavio fabricaNavio;
         
         if(tipoNavio.equals(TipoNavio.CARGA_GERAL))
-            fabricaNavio = new FactoryCargaGeral();
+            fabricaNavio = FactoryCargaGeral.FACTORY_CARGA_GERAL;
         else
             if(tipoNavio.equals(TipoNavio.GRANELEIRO))
-                fabricaNavio = new FactoryGraneleiro();
+                fabricaNavio = FactoryGraneleiro.FACTORY_GRANELEIRO;
             else
                 if(tipoNavio.equals(TipoNavio.CRUZEIRO))
-                    fabricaNavio = new FactoryCruzeiro();
+                    fabricaNavio = FactoryCruzeiro.FACTORY_CRUZEIRO;
                 else
-                    fabricaNavio = new FactoryEscuna();                   
+                    fabricaNavio = FactoryEscuna.FACTORY_ESCUNA;                   
         
         return fabricaNavio.criarNavio();
     }    
